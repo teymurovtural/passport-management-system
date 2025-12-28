@@ -23,20 +23,23 @@ public class PassportSpecification {
     public static Specification<Passport> issueDateBetween(LocalDate start, LocalDate end) {
         return (root, query, cb) -> {
             if (start == null && end == null) return null;
-            if (start != null && end != null) return cb.between(root.get("birthDate"), start, end);
-            if (start != null) return cb.greaterThanOrEqualTo(root.get("birthDate"), start);
-            return cb.lessThanOrEqualTo(root.get("birthDate"), end);
+            if (start != null && end != null) return cb.between(root.get("issueDate"), start, end);
+            if (start != null) return cb.greaterThanOrEqualTo(root.get("issueDate"), start);
+            return cb.lessThanOrEqualTo(root.get("issueDate"), end);
         };
-
     }
 
     public static Specification<Passport> expireDateBetween(LocalDate start, LocalDate end) {
         return (root, query, cb) -> {
             if (start == null && end == null) return null;
-            if (start != null && end != null) return cb.between(root.get("birthDate"), start, end);
-            if (start != null) return cb.greaterThanOrEqualTo(root.get("birthDate"), start);
-            return cb.lessThanOrEqualTo(root.get("birthDate"), end);
+            if (start != null && end != null) return cb.between(root.get("expireDate"), start, end);
+            if (start != null) return cb.greaterThanOrEqualTo(root.get("expireDate"), start);
+            return cb.lessThanOrEqualTo(root.get("expireDate"), end);
         };
+    }
+
+    public static Specification<Passport> isActive() {
+        return (root, query, cb) -> cb.equal(root.get("active"), true);
     }
 
 }

@@ -12,6 +12,7 @@ public class RelationUtils {
         if (personId != null) {
             Person person = personRepository.findById(personId)
                     .orElseThrow(() -> new IdNotFoundException("Person not found with id: " + personId));
+
             passport.setPerson(person);
             person.setPassport(passport);
         }

@@ -122,13 +122,13 @@ public class PersonServiceImpl implements PersonService {
 
         PageRequest pageRequest = PageRequest.of(page, size, sort);
 
-        Page<Person> personsPage = personRepository.findAll(
-                Specification.where(PersonSpecification.hasFirstName(firstName))
-                        .and(PersonSpecification.hasLastName(lastName))
-                        .and(PersonSpecification.hasGender(gender))
-                        .and(PersonSpecification.birthDateBetween(birthStart, birthEnd)),
-                pageRequest
-        );
+        Specification<Person> spec = Specification.where(PersonSpecification.isActive())
+                .and(PersonSpecification.hasFirstName(firstName))
+                .and(PersonSpecification.hasLastName(lastName))
+                .and(PersonSpecification.hasGender(gender))
+                .and(PersonSpecification.birthDateBetween(birthStart, birthEnd));
+
+        Page<Person> personsPage = personRepository.findAll(spec, pageRequest);
 
         return personsPage.map(personMapper::entityToDto);
     }

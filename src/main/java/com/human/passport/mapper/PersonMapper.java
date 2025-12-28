@@ -3,16 +3,15 @@ package com.human.passport.mapper;
 import com.human.passport.dto.request.PersonRequestDto;
 import com.human.passport.dto.response.PersonResponseDto;
 import com.human.passport.entities.Person;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class PersonMapper {
 
     private final PassportMapper passportMapper;
-
-    public PersonMapper(PassportMapper passportMapper) {
-        this.passportMapper = passportMapper;
-    }
+    
 
     public PersonResponseDto entityToDto(Person person){
         if (person == null) return null;

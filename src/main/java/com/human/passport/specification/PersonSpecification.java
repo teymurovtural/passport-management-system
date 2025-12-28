@@ -31,4 +31,8 @@ public class PersonSpecification {
             return cb.lessThanOrEqualTo(root.get("birthDate"), end);
         };
     }
+
+    public static Specification<Person> isActive() {
+        return (root, query, cb) -> cb.equal(root.get("active"), true);
+    }
 }
