@@ -41,5 +41,3 @@ Proyekt One-to-One (biri-birə) əlaqəsi üzərində qurulub:
 Hər bir Person-un (Şəxs) yalnız bir aktiv Passport-u ola bilər.
 
 Pasportlar üçün 4 əsas növ dəstəklənir: ORDINARY, DIPLOMATIC, SERVICE, OFFICIAL.
-
-Müəllif: Tural Teymurov
